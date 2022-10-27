@@ -20,6 +20,7 @@ public class Movie {
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
     private boolean promoted;
+    private String poster;
 
     public Long getId() {
         return id;
@@ -79,5 +80,13 @@ public class Movie {
 
     public void setPromoted(boolean promoted) {
         this.promoted = promoted;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 }

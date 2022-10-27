@@ -6,6 +6,9 @@ public class GenreDto {
     private String name;
     private String description;
 
+    public GenreDto() {
+    }
+
     public GenreDto(long id, String name, String description) {
         this.id = id;
         this.name = name;
