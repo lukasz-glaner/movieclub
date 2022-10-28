@@ -17,10 +17,10 @@ class CustomSecurityConfig {
     private static final String USER_ROLE = "USER";
     private static final String EDITOR_ROLE = "EDITOR";
     private static final String ADMIN_ROLE = "ADMIN";
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authz) -> authz
+                        .mvcMatchers("/ocen-film").authenticated()
                         .mvcMatchers("/admin/**").hasAnyRole(EDITOR_ROLE, ADMIN_ROLE)
                         .anyRequest().permitAll()
                 )
@@ -33,7 +33,6 @@ class CustomSecurityConfig {
                 );
         http.csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"));
         http.headers().frameOptions().sameOrigin();
-
         return http.build();
     }
 
